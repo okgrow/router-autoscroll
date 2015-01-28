@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:iron-router-autoscroll',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'Scroll to the top of the page (or to a hash if given) after a route change if using Iron Router',
   git: 'https://github.com/okgrow/iron-router-autoscroll',
   documentation: 'README.md'
