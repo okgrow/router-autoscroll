@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
   api.use('iron:router@1.0.7', 'client', {weak: true});
-  api.addFiles('lib/iron-router-autoscroll.js');
+  api.addFiles('client/iron-router-autoscroll.js', 'client');
 });
 
 // TODO

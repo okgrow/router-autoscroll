@@ -2,8 +2,14 @@ Autoscroll for Iron Router
 ==========================
 
 An [Iron Router](https://atmospherejs.com/iron/router) enhancement that improves navigation for pages that have more than one screen-ful of content.
-It automatically scrolls to the top of the page after a route change,
-or to an anchor/hash if one is present in the URL.
+It causes the page to scroll to the right place after changing routes (which people are often surprised to find doesn't happen by default with Iron Router).
+
+"The right place" is:
+
+1. The previous position if we're returning via the back button, or
+2. The element whose id is specified in the URL hash (if present), or
+3. The top of page otherwise
+
 
 Why?
 ----
@@ -16,6 +22,10 @@ it just changes content in the existing page (as far as the browser is concerned
 The viewport stays in the same place it was already.
 So when navigating from a page that's scrolled down already this feels to the user like navigating to a new page and being scrolled partway down, which feels unnatural.
 
+Limiations
+----------
+
+There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change). PR's are welcome.
 
 Other notes
 ---------------
