@@ -3,6 +3,8 @@ var backToPosition;
 
 // Keep track of the last position for every page in case we return to it
 // via the back button or history.
+// TODO we should probably be keeping this in history.state rather than having
+// a scrollPositions object
 var saveScrollPosition = function () {
   scrollPositions[window.location] = $(window).scrollTop();
 };
