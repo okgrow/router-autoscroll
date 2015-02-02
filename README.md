@@ -22,10 +22,11 @@ it just changes content in the existing page (as far as the browser is concerned
 The viewport stays in the same place it was already.
 So when navigating from a page that's scrolled down already this feels to the user like navigating to a new page and being scrolled partway down, which feels unnatural.
 
-Limiations
-----------
+Limitations
+-----------
 
-There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change). PR's are welcome.
+There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
+PR's are welcome.
 
 Other notes
 ---------------
