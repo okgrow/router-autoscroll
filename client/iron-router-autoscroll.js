@@ -30,7 +30,6 @@ var scrollToTop = function () {
       if (backToPosition) {
         position = backToPosition;
         backToPosition = null;
-        console.log("back button used, scrolling to " + position);
       } else if ($(hash).length) {
         position = $(hash).offset().top;
       }
