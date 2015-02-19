@@ -21,6 +21,7 @@ window.onpopstate = function(event) {
 // 3. The top of page otherwise
 var scrollToTop = function () {
   var self = this;
+  self.next();
 
   if (self.ready()) {
     // defer until after the DOM update so that the position can be correct
@@ -48,7 +49,7 @@ var scrollToTop = function () {
 
 if (Package['iron:router']) {
   Package['iron:router'].Router.onStop(saveScrollPosition);
-  Package['iron:router'].Router.onAfterAction(scrollToTop);
+  Package['iron:router'].Router.onRun(scrollToTop);
 } else {
   if (console.warn) {
     console.warn("The okgrow:iron-router-autoscroll package requires iron:router, please add it.");
