@@ -22,11 +22,21 @@ it just changes content in the existing page (as far as the browser is concerned
 The viewport stays in the same place it was already.
 So when navigating from a page that's scrolled down already this feels to the user like navigating to a new page and being scrolled partway down, which feels unnatural.
 
-Installing
+Installation
 ----------
 
 `meteor add okgrow:iron-router-autoscroll`
 
+
+Configuration
+-----------
+
+The animation speed defaults to 200 ms.
+To change this use:
+
+``` javascript
+IronRouterAutoscroll.animationDuration = 100;
+```
 
 Limitations
 -----------
