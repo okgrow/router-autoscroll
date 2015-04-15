@@ -38,8 +38,11 @@ To change this use:
 IronRouterAutoscroll.animationDuration = 100;
 ```
 
-Limitations
+Known issues
 -----------
+
+After a hot code push it stops working due to [a bug in Iron Router](https://github.com/iron-meteor/iron-router/issues/1219).
+Manually reloading the page fixes is a workaround in development.
 
 There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
