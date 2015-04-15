@@ -1,3 +1,7 @@
+IronRouterAutoscroll = {
+  animationDuration: 200,
+};
+
 var scrollPositions = {};
 var backToPosition;
 
@@ -28,7 +32,6 @@ var scrollToTop = function () {
     Tracker.afterFlush(function () {
       var hash = window.location.hash;
       var position;
-      var animationTime = 200;
 
       if (backToPosition) {
         position = backToPosition;
@@ -42,7 +45,7 @@ var scrollToTop = function () {
 
       $('body').animate({
         scrollTop: position
-      }, animationTime);
+      }, IronRouterAutoscroll.animationDuration);
     });
   }
 };
