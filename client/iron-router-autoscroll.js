@@ -43,7 +43,7 @@ var scrollToTop = function () {
         position = 0;
       }
 
-      $('body').animate({
+      $('body,html').animate({
         scrollTop: position
       }, IronRouterAutoscroll.animationDuration);
     });
