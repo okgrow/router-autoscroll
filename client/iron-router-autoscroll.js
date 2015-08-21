@@ -31,6 +31,8 @@ var scrollToTop = function () {
     // defer until after the DOM update so that the position can be correct
     Tracker.afterFlush(function () {
       var hash = window.location.hash;
+      if(hash.indexOf('maintainScroll=1') > -1) return;
+
       var position;
 
       if (backToPosition) {

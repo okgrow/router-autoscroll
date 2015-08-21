@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:iron-router-autoscroll',
-  version: '0.0.8',
+  version: '0.0.9',
   summary: 'Fixes page position after changing pages using Iron Router',
   git: 'https://github.com/okgrow/iron-router-autoscroll',
   documentation: 'README.md'

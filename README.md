@@ -38,6 +38,18 @@ To change this use:
 IronRouterAutoscroll.animationDuration = 100;
 ```
 
+To navigate to a route and explicitly maintain scroll position, pass
+`maintainScroll=1` in the hash:
+
+Example:
+
+```javascript
+Router.go('newRoute', {}, {
+  query: {q: 'newQuery'},
+  hash: 'maintainScroll=1'
+});
+```
+
 Known issues
 -----------
 
