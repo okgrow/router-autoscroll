@@ -23,45 +23,47 @@ window.onpopstate = function(event) {
 // 1. The previous position if we're returning via the back button
 // 2. The element whose id is specified in the URL hash
 // 3. The top of page otherwise
-var scrollToTop = function () {
+var smartlyScroll = function () {
   var self = this;
-  self.next();
 
-  if (self.ready()) {
-    // defer until after the DOM update so that the position can be correct
-    Tracker.afterFlush(function () {
-      var hash = window.location.hash;
-      if(hash.indexOf('maintainScroll=1') > -1) return;
-
-      var position;
-
-      if (backToPosition) {
-        position = backToPosition;
-        backToPosition = null;
-      } else if ($(hash).length) {
-        position = $(hash).offset().top;
-      }
-      else {
-        position = 0;
-      }
-
-      $('body,html').animate({
-        scrollTop: position
-      }, IronRouterAutoscroll.animationDuration);
-    });
+  if (Package['iron:router']) {
+    // XXX why do we need to call next() here ?
+    self.next();
+    // XXX why do we abort if not ready, shouldn't we try once ready?
+    if( !self.ready()) return;
   }
+
+  // defer until after the DOM update so that the position can be correct
+  Tracker.afterFlush(function () {
+    var hash = window.location.hash;
+    if(hash.indexOf('maintainScroll=1') > -1) return;
+
+    var position;
+
+    if (backToPosition) {
+      position = backToPosition;
+      backToPosition = null;
+    } else if ($(hash).length) {
+      position = $(hash).offset().top;
+    }
+    else {
+      position = 0;
+    }
+
+    $('body,html').animate({
+      scrollTop: position
+    }, IronRouterAutoscroll.animationDuration);
+  });
+
 };
 
 if (Package['iron:router']) {
   Package['iron:router'].Router.onStop(saveScrollPosition);
-  Package['iron:router'].Router.onRun(scrollToTop);
+  Package['iron:router'].Router.onRun(smartlyScroll);
 }
 
 if (Package["kadira:flow-router"]) {
-  //TODO consolidate scroll functionality
-  var scrollToTop = function scrollToTop () {
-    $(document).scrollTop(0);
-  }
-  Package["kadira:flow-router"].FlowRouter.triggers.enter([scrollToTop]);
+  Package["kadira:flow-router"].FlowRouter.triggers.enter([smartlyScroll]);
+  Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 
 }
