@@ -22,7 +22,7 @@ insecure@1.0.3
 jquery@1.11.3_2
 json@1.0.3
 kadira:blaze-layout@2.0.0
-kadira:flow-router@2.0.0
+kadira:flow-router@2.4.0
 launch-screen@1.0.2
 livedata@1.0.13
 logging@1.0.7
@@ -33,6 +33,7 @@ minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
 observe-sequence@1.0.6
+okgrow:iron-router-autoscroll@0.0.10
 ordered-dict@1.0.3
 random@1.0.3
 reactive-dict@1.1.0

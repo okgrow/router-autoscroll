@@ -55,8 +55,13 @@ var scrollToTop = function () {
 if (Package['iron:router']) {
   Package['iron:router'].Router.onStop(saveScrollPosition);
   Package['iron:router'].Router.onRun(scrollToTop);
-} else {
-  if (console.warn) {
-    console.warn("The okgrow:iron-router-autoscroll package requires iron:router, please add it.");
+}
+
+if (Package["kadira:flow-router"]) {
+  //TODO consolidate scroll functionality
+  var scrollToTop = function scrollToTop () {
+    $(document).scrollTop(0);
   }
+  Package["kadira:flow-router"].FlowRouter.triggers.enter([scrollToTop]);
+
 }
