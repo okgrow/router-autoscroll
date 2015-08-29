@@ -1,0 +1,25 @@
+{
+  "name": "router-example",
+  "version": "0.1.0",
+  "description": "Manage settings, testing, deployment of your meteor app",
+  "scripts": {
+    "start": "./runExamples.sh",
+    "test": "spacejam test-packages ./",
+    "deploy": "meteor deploy your-site.meteor.com",
+    "view": "open http://your-site.meteor.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okgrow/router-autoscroll"
+  },
+  "keywords": [
+    "meteor", "npm", "package.json"
+  ],
+  "author": "Dean Radcliffe",
+  "license": "MIT",
+  "homepage": "https://github.com/okgrow/router-autoscroll",
+  "devDependencies": {
+    "spacejam": "^1.2.2"
+  }
+
+}
