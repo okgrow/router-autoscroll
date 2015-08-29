@@ -9,4 +9,4 @@ autopublish
 insecure
 kadira:blaze-layout
 kadira:flow-router
-okgrow:iron-router-autoscroll
+okgrow:router-autoscroll

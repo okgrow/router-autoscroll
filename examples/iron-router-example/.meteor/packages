@@ -8,4 +8,4 @@ meteor-platform
 autopublish
 insecure
 iron:router
-okgrow:iron-router-autoscroll
+okgrow:router-autoscroll
