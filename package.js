@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'okgrow:iron-router-autoscroll',
+  name: 'okgrow:router-autoscroll',
   version: '0.0.10',
-  summary: 'Fixes page position after changing pages using Iron Router',
-  git: 'https://github.com/okgrow/iron-router-autoscroll',
+  summary: 'Smart management of scroll position across route changes for Iron and Flow Router',
+  git: 'https://github.com/okgrow/router-autoscroll',
   documentation: 'README.md'
 });
 
@@ -10,13 +10,13 @@ Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.use('kadira:flow-router@2.4.0', 'client', {weak: true});
-  api.addFiles('client/iron-router-autoscroll.js', 'client');
-  api.export('IronRouterAutoscroll');
+  api.addFiles('client/router-autoscroll.js', 'client');
+  api.export('RouterAutoscroll');
 });
 
 // TODO
 // Package.onTest(function(api) {
 //   api.use('tinytest');
-//   api.use('iron-router-autoscroll');
-//   api.addFiles('test/iron-router-autoscroll-tests.js');
+//   api.use('router-autoscroll');
+//   api.addFiles('test/client/router-autoscroll-tests.js');
 // });

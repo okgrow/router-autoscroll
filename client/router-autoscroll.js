@@ -1,4 +1,4 @@
-IronRouterAutoscroll = {
+RouterAutoscroll = {
   animationDuration: 200,
 };
 
@@ -52,7 +52,7 @@ var smartlyScroll = function () {
 
     $('body,html').animate({
       scrollTop: position
-    }, IronRouterAutoscroll.animationDuration);
+    }, RouterAutoscroll.animationDuration);
   });
 
 };

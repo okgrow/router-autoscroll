@@ -1,8 +1,8 @@
-Autoscroll for Iron Router
+Autoscroll for Meteor
 ==========================
 
-An [Iron Router](https://atmospherejs.com/iron/router) enhancement that improves navigation for pages that have more than one screen-ful of content.
-It causes the page to scroll to the right place after changing routes (which people are often surprised to find doesn't happen by default with Iron Router).
+An [Iron Router](https://atmospherejs.com/iron/router) and [Flow Router](https://atmospherejs.com/kadira/flow-router) enhancement that improves navigation for pages that have more than one screen-full of content.
+It causes the page to scroll to the right place after changing routes (which people are often surprised to find doesn't happen by default).
 
 "The right place" is:
 
@@ -25,7 +25,7 @@ So when navigating from a page that's scrolled down already this feels to the us
 Installation
 ----------
 
-`meteor add okgrow:iron-router-autoscroll`
+`meteor add okgrow:router-autoscroll`
 
 
 Configuration
@@ -41,7 +41,7 @@ IronRouterAutoscroll.animationDuration = 100;
 To navigate to a route and explicitly maintain scroll position, pass
 `maintainScroll=1` in the hash:
 
-Example:
+Example (for `iron:router`):
 
 ```javascript
 Router.go('newRoute', {}, {
@@ -62,5 +62,5 @@ PR's are welcome.
 Other notes
 ---------------
 
-This package enhances Iron Router.
-If Iron Router isn't already added to the app it does nothing (it doesn't automatically add Iron Router for you).
+This package enhances Iron Router, or Flow Router, whichever it detects, but it
+does not force an install of either package since its dependency is declared as `{weak: true}`.
