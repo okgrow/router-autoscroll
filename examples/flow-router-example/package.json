@@ -5,19 +5,19 @@
   "scripts": {
     "start": "meteor --port 4160 --settings settings.development.json",
     "test": "spacejam test-packages ./",
-    "deploy": "meteor deploy your-site.meteor.com",
-    "view": "open http://your-site.meteor.com"
+    "deploy": "meteor deploy flow-router-autoscroll.meteor.com",
+    "view": "open http://flow-router-autoscroll.meteor.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/okgrow/iron-router-autoscroll"
+    "url": "https://github.com/okgrow/router-autoscroll"
   },
   "keywords": [
     "meteor", "npm", "package.json"
   ],
   "author": "Dean Radcliffe",
   "license": "MIT",
-  "homepage": "https://github.com/okgrow/iron-router-autoscroll",
+  "homepage": "https://github.com/okgrow/router-autoscroll",
   "devDependencies": {
     "spacejam": "^1.2.2"
   }

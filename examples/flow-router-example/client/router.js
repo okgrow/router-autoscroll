@@ -9,6 +9,11 @@ FlowRouter.route('/links', {
     BlazeLayout.render("mainLayout", {content: "links"});
   }
 });
+FlowRouter.route('/tables', {
+  action: function() {
+    BlazeLayout.render("mainLayout", {content: "tables"});
+  }
+});
 
 FlowRouter.route('/:postId', {
   action: function() {
