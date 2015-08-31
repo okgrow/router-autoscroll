@@ -1,9 +1,9 @@
 <template name="mainLayout">
-  <header><h1>Kadira Blog</h1></header>
+  <header><h1>Router AutoScroll Demo</h1></header>
   <main>
     {{>Template.dynamic template=content}}
   </main>
-  <footer>We love Meteor</footer>
+  <footer>We love Meteor!</footer>
 </template>
 
 <template name="blogHome">
@@ -30,7 +30,8 @@
 </template>
 
 <template name="blogPost">
-  <!--- XXX these back links dont trigger autoscroll, should they be router links? -->
+  <!--- Note these back links dont trigger autoscroll, since they are not
+        actual calls like history.back() - they link forward to the page -->
   <a href="/">Back</a> <br/>
   <p>This is a single blog post</p>
   <p>This is a single blog post</p>
