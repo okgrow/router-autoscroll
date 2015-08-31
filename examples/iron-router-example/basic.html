@@ -7,20 +7,35 @@
 
 <template name="Home">
 
-  {{> Nav}}
-
   <h1>Home</h1>
 
-  <p>
-    Data Title: {{title}}
-  </p>
-
-  {{> Nav}}
-
+  {{> RouteNav}}
 </template>
 
 <template name="One">
-  {{> Nav}}
+  {{> RouteNav}}
+
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h1>Page One</h1>
+  <h2 id="anchor">Section 2 - More above &amp; below</h2>
+  {{> RouteNav}}
 
   <h1>Page One</h1>
   <h1>Page One</h1>
@@ -44,7 +59,7 @@
 </template>
 
 <template name="Two">
-  {{> Nav}}
+  {{> RouteNav}}
 
   <h1>Page Two</h1>
     <h1>Page Two</h1>
@@ -65,13 +80,19 @@
 
 </template>
 
-<template name="Nav">
+<template name="RouteNav">
   <ul>
     <li>
       <a href="/">Home</a>
     </li>
     <li>
       <a href="/one">Page One</a>
+    </li>
+    <li>
+      <a href="/one#">Page One (Top)</a>
+    </li>
+    <li>
+      <a href="/one#anchor">Page One (Anchor)</a>
     </li>
     <li>
       <a href="/two">Page Two</a>
