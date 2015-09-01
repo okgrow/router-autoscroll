@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.use('kadira:flow-router@2.4.0', 'client', {weak: true});
   api.addFiles('client/router-autoscroll.js', 'client');
-  api.export('RouterAutoscroll');
+  api.export('RouterAutoscroll', 'client');
 });
 
 // TODO
