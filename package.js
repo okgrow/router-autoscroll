@@ -8,8 +8,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
-  api.use('tracker');
-  api.use('reactive-dict');
+  api.use(['tracker', 'reactive-dict', 'reload']);
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.use('kadira:flow-router@2.4.0', 'client', {weak: true});
   api.addFiles('client/router-autoscroll.js', 'client');

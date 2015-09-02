@@ -15,6 +15,11 @@ window.onpopstate = function () {
   backToPosition = scrollPositions.get(window.location.href);
 };
 
+window.addEventListener("load", function () {
+  backToPosition = scrollPositions.get("hotCodePush://");
+  scheduleScroll();
+});
+
 // Scroll to the right place after changing routes. "The right place" is:
 // 1. The previous position if we're returning via the back button
 // 2. The element whose id is specified in the URL hash
@@ -70,5 +75,16 @@ if (Package["kadira:flow-router"]) {
   Package["kadira:flow-router"].FlowRouter.triggers.enter([scheduleScroll]);
   Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
+
+Reload._onMigrate(function (retry) {
+  // dont ever break hot reload
+  try {
+    //set us up as if we'd just done an onpopstate
+    var currentScroll = $(window).scrollTop();
+    scrollPositions.set("hotCodePush://", currentScroll);
+
+  } catch(ex){;}
+  return [true];
+});
 
 RouterAutoscroll.scrollPositions = scrollPositions;
