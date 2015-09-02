@@ -3,16 +3,16 @@ RouterAutoscroll = {
 };
 
 var backToPosition;
-//TODO survive a hot code push using a ReactiveDict
-RouterAutoscroll.scrollPositions = {};
+// by passing a name, our saved positions will survive a hot code push
+var scrollPositions = new ReactiveDict("okgrow-router-autoscroll");
 
 function saveScrollPosition () {
-  RouterAutoscroll.scrollPositions[window.location.href] = $(window).scrollTop();
+  scrollPositions.set(window.location.href, $(window).scrollTop());
 };
 
 //TODO use history state so we don't litter
 window.onpopstate = function () {
-  backToPosition = RouterAutoscroll.scrollPositions[window.location.href];
+  backToPosition = scrollPositions.get(window.location.href);
 };
 
 // Scroll to the right place after changing routes. "The right place" is:
@@ -39,18 +39,20 @@ function getScrollToPosition () {
 }
 
 //Do the scroll, after the DOM update so that the position can be correct
-var smartlyScroll = function () {
+var scheduleScroll = function () {
   Tracker.afterFlush(function () {
     var position = getScrollToPosition();
     scrollTo(position);
   });
 };
 
-function ironRouterSmartScroll () {
-  var self = this;
-  self.next();
-  // XXX why do we abort if not ready, shouldn't we try once ready?
-  if (self.ready()) smartlyScroll();
+function ironWhenReady (callFn) {
+  return function () {
+    var self = this;
+    self.next();
+    // XXX in iron, why do we abort if not ready, shouldn't we try once ready?
+    if (self.ready()) callFn();
+  }
 }
 
 function scrollTo (position) {
@@ -60,11 +62,13 @@ function scrollTo (position) {
 }
 
 if (Package['iron:router']) {
+  Package['iron:router'].Router.onRun(ironWhenReady(scheduleScroll));
   Package['iron:router'].Router.onStop(saveScrollPosition);
-  Package['iron:router'].Router.onRun(ironRouterSmartScroll);
 }
 
 if (Package["kadira:flow-router"]) {
-  Package["kadira:flow-router"].FlowRouter.triggers.enter([smartlyScroll]);
+  Package["kadira:flow-router"].FlowRouter.triggers.enter([scheduleScroll]);
   Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
+
+RouterAutoscroll.scrollPositions = scrollPositions;
