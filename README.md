@@ -50,11 +50,17 @@ Router.go('newRoute', {}, {
 });
 ```
 
-Known issues
+Hot Code Push
 -----------
 
-After a hot code push it stops working due to [a bug in Iron Router](https://github.com/iron-meteor/iron-router/issues/1219).
-Manually reloading the page fixes is a workaround in development.
+The scroll position will be restored after a hot code push.
+
+Hot code pushes actually do a `window.location.reload()`, breaking
+from the single-page-app (SPA) paradigm, but we use the HotCodePush
+module to set up the saving/restoring of scroll position.
+
+Known issues
+------------
 
 There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
