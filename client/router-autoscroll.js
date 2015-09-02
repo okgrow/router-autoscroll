@@ -17,7 +17,10 @@ window.onpopstate = function () {
 
 window.addEventListener("load", function () {
   backToPosition = scrollPositions.get("hotCodePush://");
-  scheduleScroll();
+  if (backToPosition) {
+    scrollPositions.set("hotCodePush://", undefined);
+    scheduleScroll();
+  }
 });
 
 // Scroll to the right place after changing routes. "The right place" is:
