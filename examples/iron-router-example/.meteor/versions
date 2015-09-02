@@ -39,6 +39,7 @@ mongo@1.1.0
 observe-sequence@1.0.6
 okgrow:router-autoscroll@0.0.10
 ordered-dict@1.0.3
+promise@0.2.4
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5

@@ -3,7 +3,7 @@ RouterAutoscroll = {
 };
 
 var backToPosition;
-// by passing a name, our saved positions will survive a hot code push
+// Saved positions will survive a hot code push
 var scrollPositions = new ReactiveDict("okgrow-router-autoscroll");
 
 function saveScrollPosition () {
@@ -14,14 +14,6 @@ function saveScrollPosition () {
 window.onpopstate = function () {
   backToPosition = scrollPositions.get(window.location.href);
 };
-
-window.addEventListener("load", function () {
-  backToPosition = scrollPositions.get("hotCodePush://");
-  if (backToPosition) {
-    scrollPositions.set("hotCodePush://", undefined);
-    scheduleScroll();
-  }
-});
 
 // Scroll to the right place after changing routes. "The right place" is:
 // 1. The previous position if we're returning via the back button
@@ -79,15 +71,16 @@ if (Package["kadira:flow-router"]) {
   Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
 
-Reload._onMigrate(function (retry) {
-  // dont ever break hot reload
-  try {
-    //set us up as if we'd just done an onpopstate
-    var currentScroll = $(window).scrollTop();
-    scrollPositions.set("hotCodePush://", currentScroll);
-
-  } catch(ex){;}
-  return [true];
+HotCodePush.start.then(function () {
+  var currentScroll = $(window).scrollTop();
+  scrollPositions.set("HotCodePushScrollPosition", currentScroll);
 });
+
+HotCodePush.end.then(function () {
+  backToPosition = scrollPositions.get("HotCodePushScrollPosition");
+  if (backToPosition) {
+    scheduleScroll();
+  }
+})
 
 RouterAutoscroll.scrollPositions = scrollPositions;
