@@ -26,8 +26,15 @@ function getScrollToPosition () {
     return oldPosition;
   }
 
-  var hash = window.location.hash,
-      $hash = $(hash);
+  var hash = window.location.hash;
+  var $hash;
+  try{
+    //HTML5 allows all kinds of ids, so we can't whitelist characters, only
+    //decide the hash doesn't represent a DOM id if we fail
+    $hash = $(hash);
+  } catch (ex) {
+    $hash = [];
+  }
 
   if(hash.indexOf('maintainScroll=1') > -1)
     return undefined;

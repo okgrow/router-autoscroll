@@ -3,7 +3,8 @@ hcp = new ReactiveDict("okgrow-hot-code-push");
 
 var fakeStartPromise = {
   'then': function (actionFn) {
-    hcp.set("okgrow-hot-code-push", true);
+    //debug("scheduled begin and end hook")
+    hcp.set("has-hcp-hook", true);
     Reload._onMigrate(function () {
       try {
         actionFn()
@@ -17,11 +18,18 @@ var fakeStartPromise = {
 HotCodePush = {
   start: fakeStartPromise,
   end: new Promise(function (resolve) {
+    hcp.set("has-hcp-hook", true);
     window.addEventListener("load", function () {
-      if( hcp.get("okgrow-hot-code-push") ){
-        hcp.set("okgrow-hot-code-push", undefined);
+      //debug("detected window load")
+      if( hcp.get("has-hcp-hook") ){
+        //debug("HotCodePush.end promise resolving");
+        hcp.set("has-hcp-hook", undefined);
         resolve(true);
       }
     });
   })
 };
+
+function debug(msg) {
+  console.info(msg);
+}
