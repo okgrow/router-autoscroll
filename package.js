@@ -8,7 +8,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
-  api.use(['promise', 'reactive-dict', 'reload']);
+  api.use('promise@0.4.1');
+  api.use('reactive-dict');
+  api.use('reload');
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.use('kadira:flow-router@2.4.0', 'client', {weak: true});
   api.addFiles('client/hot-code-push.js', 'client');
