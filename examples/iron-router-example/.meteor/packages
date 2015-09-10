@@ -8,4 +8,7 @@ meteor-platform
 autopublish
 insecure
 iron:router
+peerlibrary:dimsum
 okgrow:router-autoscroll
+#to trigger hotcodepush
+#deanius:debug-ddp

@@ -1,22 +1,16 @@
 FlowRouter.route('/', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "blogHome"});
+    BlazeLayout.render("mainLayout", {content: "One"});
   }
 });
 
-FlowRouter.route('/links', {
+FlowRouter.route('/one', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "links"});
+    BlazeLayout.render("mainLayout", {content: "One"});
   }
 });
-FlowRouter.route('/tables', {
+FlowRouter.route('/two', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "tables"});
-  }
-});
-
-FlowRouter.route('/:postId', {
-  action: function() {
-    BlazeLayout.render("mainLayout", {content: "blogPost"});
+    BlazeLayout.render("mainLayout", {content: "Two"});
   }
 });

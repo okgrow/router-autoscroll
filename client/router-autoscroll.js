@@ -53,6 +53,13 @@ var scheduleScroll = function () {
   });
 };
 
+var flowScroll = function (newRoute) {
+  if(newRoute.context.pathname.indexOf("#") == -1)
+    scrollTo(0);
+  else
+    scheduleScroll();
+}
+
 function ironWhenReady (callFn) {
   return function () {
     var self = this;
@@ -74,7 +81,7 @@ if (Package['iron:router']) {
 }
 
 if (Package["kadira:flow-router"]) {
-  Package["kadira:flow-router"].FlowRouter.triggers.enter([scheduleScroll]);
+  Package["kadira:flow-router"].FlowRouter.triggers.enter([flowScroll]);
   Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
 
