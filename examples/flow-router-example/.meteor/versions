@@ -33,7 +33,7 @@ minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
 observe-sequence@1.0.6
-okgrow:router-autoscroll@0.0.11
+okgrow:router-autoscroll@0.0.12
 ordered-dict@1.0.3
 peerlibrary:dimsum@0.1.8_6
 promise@0.4.1

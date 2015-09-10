@@ -10,6 +10,13 @@ It causes the page to scroll to the right place after changing routes (which peo
 2. The element whose id is specified in the URL hash (if present), or
 3. The top of page otherwise
 
+Demo Sites
+==========
+
+You can see the behavior of each of the example sites at:
+
+* http://flow-router-autoscroll.meteor.com/
+* http://iron-router-autoscroll.meteor.com/
 
 Why?
 ----
