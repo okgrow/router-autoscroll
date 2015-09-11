@@ -1,0 +1,23 @@
+{
+  "name": "non-router-example",
+  "version": "0.1.0",
+  "description": "Example app",
+  "scripts": {
+    "start": "meteor --port 6280  --settings settings.development.json",
+    "test": "spacejam test-packages ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okgrow/router-autoscroll"
+  },
+  "keywords": [
+    "meteor", "npm", "package.json"
+  ],
+  "author": "Dean Radcliffe",
+  "license": "MIT",
+  "homepage": "https://github.com/okgrow/router-autoscroll",
+  "devDependencies": {
+    "spacejam": "^1.2.2"
+  }
+
+}
