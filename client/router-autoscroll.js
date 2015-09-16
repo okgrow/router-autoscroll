@@ -75,26 +75,33 @@ function scrollTo (position) {
   }, RouterAutoscroll.animationDuration);
 }
 
-if (Package['iron:router']) {
-  Package['iron:router'].Router.onRun(ironWhenReady(scheduleScroll));
-  Package['iron:router'].Router.onStop(saveScrollPosition);
-}
-
-if (Package["kadira:flow-router"]) {
-  Package["kadira:flow-router"].FlowRouter.triggers.enter([flowScroll]);
-  Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
-}
-
-HotCodePush.start.then(function () {
-  var currentScroll = $(window).scrollTop();
-  scrollPositions.set("HotCodePushScrollPosition", currentScroll);
-});
-
-HotCodePush.end.then(function () {
-  backToPosition = scrollPositions.get("HotCodePushScrollPosition");
-  if (backToPosition) {
-    scheduleScroll();
+function setup () {
+  if (Package['iron:router']) {
+    Package['iron:router'].Router.onRun(ironWhenReady(scheduleScroll));
+    Package['iron:router'].Router.onStop(saveScrollPosition);
   }
-})
+
+  if (Package["kadira:flow-router"]) {
+    Package["kadira:flow-router"].FlowRouter.triggers.enter([flowScroll]);
+    Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
+  }
+
+  HotCodePush.start.then(function () {
+    var currentScroll = $(window).scrollTop();
+    scrollPositions.set("HotCodePushScrollPosition", currentScroll);
+  });
+
+  HotCodePush.end.then(function () {
+    backToPosition = scrollPositions.get("HotCodePushScrollPosition");
+    if (backToPosition) {
+      scheduleScroll();
+    }
+  })
+}
+
+if (Package.appcache)
+  console.log("okgrow:router-autoscroll delegating scroll management to appcache package")
+else
+  setup()
 
 RouterAutoscroll.scrollPositions = scrollPositions;
