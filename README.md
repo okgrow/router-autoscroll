@@ -72,6 +72,9 @@ Known issues
 There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
 
+The `appcache` package changes the behavior of URL navigation, and this package
+does not initialize when it detects it in your app.
+
 Other notes
 ---------------
 
