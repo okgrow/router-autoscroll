@@ -54,7 +54,9 @@ var scheduleScroll = function () {
 };
 
 var flowScroll = function (newRoute) {
-  if(newRoute.context.pathname.indexOf("#") == -1)
+  if(newRoute.queryParams.maintainScroll)
+    return; // flow router does not support #
+  else if(newRoute.context.pathname.indexOf("#") == -1)
     scrollTo(0);
   else
     scheduleScroll();
