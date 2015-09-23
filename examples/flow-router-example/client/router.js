@@ -1,16 +1,18 @@
+LayoutEngine = (typeof BlazeLayout === "undefined") ? FlowLayout : BlazeLayout;
+
 FlowRouter.route('/', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "One"});
+    LayoutEngine.render("mainLayout", {content: "One"});
   }
 });
 
 FlowRouter.route('/one', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "One"});
+    LayoutEngine.render("mainLayout", {content: "One"});
   }
 });
 FlowRouter.route('/two', {
   action: function() {
-    BlazeLayout.render("mainLayout", {content: "Two"});
+    LayoutEngine.render("mainLayout", {content: "Two"});
   }
 });

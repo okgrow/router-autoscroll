@@ -7,7 +7,14 @@
 meteor-platform
 autopublish
 insecure
-kadira:blaze-layout
-kadira:flow-router
+
+# flow-router 2.0+
+#kadira:flow-router
+#kadira:blaze-layout
+
+# flow-router < 2.0
+meteorhacks:flow-router
+meteorhacks:flow-layout
+
 peerlibrary:dimsum
 okgrow:router-autoscroll
