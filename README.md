@@ -42,7 +42,7 @@ The animation speed defaults to 200 ms.
 To change this use:
 
 ``` javascript
-IronRouterAutoscroll.animationDuration = 100;
+RouterAutoscroll.animationDuration = 100;
 ```
 
 To navigate to a route and explicitly maintain scroll position, pass
