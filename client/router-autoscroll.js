@@ -90,6 +90,15 @@ if (Package["kadira:flow-router-ssr"]) {
   Package["kadira:flow-router-ssr"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
 
+if (Package["meteorhacks:flow-router"]) {
+  Package["meteorhacks:flow-router"].FlowRouter.triggers.enter([flowScroll]);
+  Package["meteorhacks:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
+}
+
+if (Package["meteorhacks:flow-router-ssr"]) {
+  Package["meteorhacks:flow-router-ssr"].FlowRouter.triggers.enter([flowScroll]);
+  Package["meteorhacks:flow-router-ssr"].FlowRouter.triggers.exit([saveScrollPosition]);
+}
 
 HotCodePush.start.then(function () {
   var currentScroll = $(window).scrollTop();
