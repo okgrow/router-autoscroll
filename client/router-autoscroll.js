@@ -85,6 +85,12 @@ if (Package["kadira:flow-router"]) {
   Package["kadira:flow-router"].FlowRouter.triggers.exit([saveScrollPosition]);
 }
 
+if (Package["kadira:flow-router-ssr"]) {
+  Package["kadira:flow-router-ssr"].FlowRouter.triggers.enter([flowScroll]);
+  Package["kadira:flow-router-ssr"].FlowRouter.triggers.exit([saveScrollPosition]);
+}
+
+
 HotCodePush.start.then(function () {
   var currentScroll = $(window).scrollTop();
   scrollPositions.set("HotCodePushScrollPosition", currentScroll);
