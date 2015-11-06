@@ -34,6 +34,13 @@ Installation
 
 `meteor add okgrow:router-autoscroll`
 
+With Iron Router and appcache
+-----------------------------
+
+At present, this package cannot be used in combination with both `iron:router`
+and `appcache`. The combination of the two packages does weird things to the
+hashes in the URLs, and breaks routing completely. There seem to be no problems
+when using `flow-router`. A PR that fixes this issue is very welcome.
 
 Configuration
 -----------
