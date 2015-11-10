@@ -1,5 +1,6 @@
 RouterAutoscroll = {
   animationDuration: 200,
+  marginTop: 0
 };
 
 var backToPosition;
@@ -8,7 +9,7 @@ var scrollPositions = new ReactiveDict("okgrow-router-autoscroll");
 
 function saveScrollPosition () {
   scrollPositions.set(window.location.href, $(window).scrollTop());
-};
+}
 
 //TODO use history state so we don't litter
 window.onpopstate = function () {
@@ -58,7 +59,7 @@ var flowScroll = function (newRoute) {
     scrollTo(0);
   else
     scheduleScroll();
-}
+};
 
 function ironWhenReady (callFn) {
   return function () {
@@ -71,7 +72,7 @@ function ironWhenReady (callFn) {
 
 function scrollTo (position) {
   $('body,html').animate({
-    scrollTop: position
+    scrollTop: position - RouterAutoscroll.marginTop
   }, RouterAutoscroll.animationDuration);
 }
 
@@ -110,6 +111,6 @@ HotCodePush.end.then(function () {
   if (backToPosition) {
     scheduleScroll();
   }
-})
+});
 
 RouterAutoscroll.scrollPositions = scrollPositions;
