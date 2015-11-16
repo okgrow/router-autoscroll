@@ -52,6 +52,13 @@ To change this use:
 RouterAutoscroll.animationDuration = 100;
 ```
 
+For some cases (top fixed elements), margins are needed.
+To set this use:
+
+``` javascript
+RouterAutoscroll.marginTop = 50;
+```
+
 To navigate to a route and explicitly maintain scroll position, pass
 `maintainScroll=1` in the hash:
 
