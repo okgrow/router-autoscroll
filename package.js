@@ -1,6 +1,6 @@
 Package.describe({
   name: 'okgrow:router-autoscroll',
-  version: '0.1.3',
+  version: '0.1.4',
   summary: 'Smart management of scroll position across route changes for Iron and Flow Router',
   git: 'https://github.com/okgrow/router-autoscroll',
   documentation: 'README.md'
