@@ -8,8 +8,8 @@ var backToPosition;
 var scrollPositions = new ReactiveDict("okgrow-router-autoscroll");
 
 function saveScrollPosition () {
-  scrollPositions.set(window.location.href, $(window).scrollTop());
-}
+  scrollPositions.set(window.location.href, scrollTop());
+};
 
 //TODO use history state so we don't litter
 window.onpopstate = function () {
@@ -29,19 +29,32 @@ function getScrollToPosition () {
 
   var hash = window.location.hash;
   var $hash;
-  try{
-    //HTML5 allows all kinds of ids, so we can't whitelist characters, only
-    //decide the hash doesn't represent a DOM id if we fail
-    $hash = $(hash);
-  } catch (ex) {
-    $hash = [];
-  }
 
   if(hash.indexOf('maintainScroll=1') > -1)
     return undefined;
 
-  if ($hash.length)
-    return $hash.offset().top;
+  if (Package["jquery"]) {
+    try {
+      //HTML5 allows all kinds of ids, so we can't whitelist characters, only
+      //decide the hash doesn't represent a DOM id if we fail
+      $hash = $(hash);
+    } catch (ex) {
+      $hash = [];
+    }
+
+    if ($hash.length)
+      return $hash.offset().top;
+  } else {
+    try {
+      $hash = document.querySelector(hash);
+    } catch (ex) {
+      $hash = false;
+    }
+
+    if ($hash)
+      return $hash.getBoundingClientRect().top;
+  }
+  
 
   return 0;
 }
@@ -70,10 +83,24 @@ function ironWhenReady (callFn) {
   }
 }
 
+// use jQuery if available, otherwise support IE9+
+function scrollTop () {
+  if (Package["jquery"]) {
+    return $(window).scrollTop();
+  } else {
+    // uses solution from http://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window
+    return document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+  }
+}
+
 function scrollTo (position) {
-  $('body,html').animate({
-    scrollTop: position - RouterAutoscroll.marginTop
-  }, RouterAutoscroll.animationDuration);
+  if (Package["jquery"]) {
+    $('body,html').animate({
+      scrollTop: position - RouterAutoscroll.marginTop
+    }, RouterAutoscroll.animationDuration);
+  } else {
+    window.scroll(0, position);
+  }
 }
 
 if (Package['iron:router']) {
@@ -102,7 +129,7 @@ if (Package["meteorhacks:flow-router-ssr"]) {
 }
 
 HotCodePush.start.then(function () {
-  var currentScroll = $(window).scrollTop();
+  var currentScroll = scrollTop();
   scrollPositions.set("HotCodePushScrollPosition", currentScroll);
 });
 
