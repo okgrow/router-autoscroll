@@ -1,7 +1,7 @@
 <template name="One">
-  <p>A long document with many anchors.</p>
+  <p id="one-html-visible">A long document with many anchors.</p>
 
-  <p><a href="#anchor-2">Step 1: Scroll to a lower section by ID</a></p>
+  <p><a href="#anchor-2" id="in-page-anchor">Step 1: Scroll to a lower section by ID</a></p>
   <h2 id="anchor-1">Section 1</h2>
 
   {{{dimsum 3}}}
@@ -9,8 +9,8 @@
   <h2 id="anchor-2">Section 2</h2>
   <p><a href="#aname-3">Step 2: Scroll to a lower section by anchor name (not supported)</a></p>
   <p><a href="#anchor-3">Step 3: Scroll to a lower section by id</a></p>
-  <p><a href="two">Step 5: Go to another route (you should arrive at the top)</a></p>
-  <p><a href="two#anchor-2">Step 7: Go to another page's middle</a></p>
+  <p><a href="two" id="other-page-without-anchor">Step 5: Go to another route (you should arrive at the top)</a></p>
+  <p><a href="two#anchor-2" id="other-page-with-anchor">Step 7: Go to another page's middle</a></p>
   <p><a href="two#maintainScroll=1">Step 9: Go to another page, maintaining this page's scroll position (if the page is long enough).</a></p>
   {{{dimsum 2}}}
 

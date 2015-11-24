@@ -4,7 +4,8 @@
   "description": "Manage settings, testing, deployment of your meteor app",
   "scripts": {
     "start": "./runExamples.sh",
-    "test": "spacejam test-packages ./",
+    "pretest": "selenium-standalone install --version=2.47.1 --silent",
+    "test": "nightwatch",
     "deploy": "meteor deploy your-site.meteor.com",
     "view": "open http://your-site.meteor.com"
   },
@@ -13,13 +14,15 @@
     "url": "https://github.com/okgrow/router-autoscroll"
   },
   "keywords": [
-    "meteor", "npm", "package.json"
+    "meteor",
+    "npm",
+    "package.json"
   ],
   "author": "Dean Radcliffe",
   "license": "MIT",
   "homepage": "https://github.com/okgrow/router-autoscroll",
   "devDependencies": {
-    "spacejam": "^1.2.2"
+    "nightwatch": "^0.8.6",
+    "selenium-standalone": "^4.7.1"
   }
-
 }
