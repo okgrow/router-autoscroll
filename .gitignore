@@ -1,3 +1,8 @@
 .build*
 
 *npm-debug.log
+node_modules
+
+#nightwatch
+reports
+selenium-debug.log
