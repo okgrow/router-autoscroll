@@ -4,8 +4,8 @@
   "description": "Manage settings, testing, deployment of your meteor app",
   "scripts": {
     "start": "./runExamples.sh",
-    "pretest": "selenium-standalone install --version=2.47.1 --silent",
-    "test": "nightwatch",
+    "pretest": "selenium-standalone install --version=2.47.1 --drivers.chrome.version=2.19 --silent",
+    "test": "./runTests.sh",
     "deploy": "meteor deploy your-site.meteor.com",
     "view": "open http://your-site.meteor.com"
   },
