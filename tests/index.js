@@ -39,22 +39,29 @@ Object.keys(config.servers).forEach((key) => {
       .verify.urlContains('#anchor-2')
       .execute(getScrollTop, function(res) {
         this.verify.equal(res.value, storedScrollTop, 'scroll is restored to where the user left off');
-      }),
-    [ router + ': go to another page\'s middle' ]: client => client
-      .click('#other-page-with-anchor')
-      .waitForElementVisible('#two-html-visible', config.timeout)
-      .pause(config.animationDuration)
-      .verify.urlContains('two')
-      .getLocationInView('#anchor-2', function(res) {
-        this.verify.equal(res.value.y, 0, 'anchor is at the top of the viewport');
-      }),
-    [ router + ': go to page 2\'s top' ]: client => client
-      .click('#go-to-top')
-      .pause(config.animationDuration)
-      .verify.urlContains('two#')
-      .execute(getScrollTop, function(res) {
-        this.verify.equal(res.value, 0, 'viewport at top of page');
       })
-      .end()
   });
+
+  if (router === 'iron-router') {
+    module.exports.finish = client => client.end();
+  } else {
+    Object.assign(module.exports, {
+      [ router + ': go to another page\'s middle' ]: client => client
+        .click('#other-page-with-anchor')
+        .waitForElementVisible('#two-html-visible', config.timeout)
+        .pause(config.animationDuration)
+        .verify.urlContains('two')
+        .getLocationInView('#anchor-2', function(res) {
+          this.verify.equal(res.value.y, 0, 'anchor is at the top of the viewport');
+        }),
+      [ router + ': go to page 2\'s top' ]: client => client
+        .click('#go-to-top')
+        .pause(config.animationDuration)
+        .verify.urlContains('two#')
+        .execute(getScrollTop, function(res) {
+          this.verify.equal(res.value, 0, 'viewport at top of page');
+        })
+        .end()
+    });
+  }
 });
