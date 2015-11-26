@@ -24,7 +24,7 @@ Why?
 In The Old Days™ when you navigated to a new page the browser would unload the current page, load the new page, and position the viewport to the top of the page.
 If the link had an anchor/hash (e.g. `#something`) the browser would scroll down to the top of the element with that id.
 
-When changing routes using Iron Router the browser doesn't technically load a new page,
+When changing routes using modern apps with client-side routers the browser doesn't technically load a new page,
 it just changes content in the existing page (as far as the browser is concerned) so it doesn't scroll to the top.
 The viewport stays in the same place it was already.
 So when navigating from a page that's scrolled down already this feels to the user like navigating to a new page and being scrolled partway down, which feels unnatural.
@@ -34,13 +34,6 @@ Installation
 
 `meteor add okgrow:router-autoscroll`
 
-With Iron Router and appcache
------------------------------
-
-At present, this package cannot be used in combination with both `iron:router`
-and `appcache`. The combination of the two packages does weird things to the
-hashes in the URLs, and breaks routing completely. There seem to be no problems
-when using `flow-router`. A PR that fixes this issue is very welcome.
 
 Configuration
 -----------
@@ -83,7 +76,11 @@ module to set up the saving/restoring of scroll position.
 Known issues
 ------------
 
-There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
+1. At present, this package cannot be used in combination with both `iron:router`
+and `appcache`. The combination of the two packages does weird things to the
+hashes in the URLs, and breaks routing completely. There seem to be no problems
+when using `flow-router`. A PR that fixes this issue is very welcome.
+1. There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
 
 Other notes
