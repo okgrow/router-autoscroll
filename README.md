@@ -95,7 +95,7 @@ does not force an install of either package since its dependency is declared as 
 Running the Acceptance Tests
 -----------
 
-From the root folder of the project, run:
+Requires Node version 4 or above. From the root folder of the project, run:
 
 ```
 npm install
