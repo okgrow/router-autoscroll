@@ -7,9 +7,16 @@ var backToPosition;
 // Saved positions will survive a hot code push
 var scrollPositions = new ReactiveDict("okgrow-router-autoscroll");
 
-function saveScrollPosition () {
-  scrollPositions.set(window.location.href, $(window).scrollTop());
+// local variable for accessing jquery, if available
+var _jQuery = false;
+
+if (Package["jquery"]) {
+  _jQuery = Package["jquery"].jQuery;
 }
+
+function saveScrollPosition () {
+  scrollPositions.set(window.location.href, scrollTop());
+};
 
 //TODO use history state so we don't litter
 window.onpopstate = function () {
@@ -29,19 +36,31 @@ function getScrollToPosition () {
 
   var hash = window.location.hash;
   var $hash;
-  try{
-    //HTML5 allows all kinds of ids, so we can't whitelist characters, only
-    //decide the hash doesn't represent a DOM id if we fail
-    $hash = $(hash);
-  } catch (ex) {
-    $hash = [];
-  }
 
   if(hash.indexOf('maintainScroll=1') > -1)
     return undefined;
 
-  if ($hash.length)
-    return $hash.offset().top;
+  if (_jQuery) {
+    try {
+      //HTML5 allows all kinds of ids, so we can't whitelist characters, only
+      //decide the hash doesn't represent a DOM id if we fail
+      $hash = _jQuery(hash);
+    } catch (ex) {
+      $hash = [];
+    }
+
+    if ($hash.length)
+      return $hash.offset().top;
+  } else {
+    try {
+      $hash = document.querySelector(hash);
+    } catch (ex) {
+      $hash = false;
+    }
+
+    if ($hash)
+      return $hash.getBoundingClientRect().top + scrollTop();
+  }
 
   return 0;
 }
@@ -49,8 +68,10 @@ function getScrollToPosition () {
 //Do the scroll, after the DOM update so that the position can be correct
 var scheduleScroll = function () {
   Tracker.afterFlush(function () {
-    var position = getScrollToPosition();
-    scrollTo(position);
+    Meteor.defer(function () {
+      var position = getScrollToPosition();
+      scrollTo(position);
+    });
   });
 };
 
@@ -70,10 +91,24 @@ function ironWhenReady (callFn) {
   }
 }
 
-function scrollTo (position) {
-  $('body,html').animate({
-    scrollTop: position - RouterAutoscroll.marginTop
-  }, RouterAutoscroll.animationDuration);
+// use _jQuery if available, otherwise support IE9+
+var scrollTop = function () {
+  if (_jQuery) {
+    return _jQuery(window).scrollTop();
+  } else {
+    // uses solution from http://stackoverflow.com/questions/871399/cross-browser-method-for-detecting-the-scrolltop-of-the-browser-window
+    return document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+  }
+}
+
+var scrollTo = function (position) {
+  if (_jQuery) {
+    _jQuery('body,html').animate({
+      scrollTop: position - RouterAutoscroll.marginTop
+    }, RouterAutoscroll.animationDuration);
+  } else {
+    window.scroll(0, position - RouterAutoscroll.marginTop);
+  }
 }
 
 if (Package['iron:router']) {
@@ -102,7 +137,7 @@ if (Package["meteorhacks:flow-router-ssr"]) {
 }
 
 HotCodePush.start.then(function () {
-  var currentScroll = $(window).scrollTop();
+  var currentScroll = scrollTop();
   scrollPositions.set("HotCodePushScrollPosition", currentScroll);
 });
 
