@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   api.use('promise@0.4.1');
   api.use('reactive-dict');
   api.use('reload');
+  api.user('jquery@1.11.4', 'client');
   api.use('iron:router@1.0.7', 'client', {weak: true});
   api.use('kadira:flow-router@2.6.2', 'client', {weak: true});
   api.addFiles('client/hot-code-push.js', 'client');
