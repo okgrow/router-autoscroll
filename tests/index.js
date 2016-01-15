@@ -3,7 +3,9 @@
 const config = require('./config');
 
 let storedScrollTop;
-let getScrollTop = () => { return document.body.scrollTop };
+let getScrollTop = function() {
+  return document.body.scrollTop;
+};
 
 Object.keys(config.servers).forEach((key) => {
   let router = key;
