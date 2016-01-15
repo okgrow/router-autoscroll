@@ -83,6 +83,11 @@ when using `flow-router`. A PR that fixes this issue is very welcome.
 1. There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
 
+Contributing
+------------
+
+Issues and Pull Requests are always welcome. Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/contributing.md).
+
 Other notes
 ---------------
 
