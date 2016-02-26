@@ -83,8 +83,25 @@ when using `flow-router`. A PR that fixes this issue is very welcome.
 1. There are a few edge cases which aren't supported yet (around navigation using the back button and pages which load dynamic content after the route change).
 PR's are welcome.
 
+Contributing
+------------
+
+Issues and Pull Requests are always welcome. Please read our [contribution guidelines](https://github.com/okgrow/guides/blob/master/contributing.md).
+
 Other notes
 ---------------
 
 This package enhances Iron Router, or Flow Router, whichever it detects, but it
 does not force an install of either package since its dependency is declared as `{weak: true}`.
+
+Running the Acceptance Tests
+-----------
+
+Requires Node version 4 or above. From the root folder of the project, run:
+
+```
+npm install
+npm test
+```
+
+The required selenium server and chromedriver dependencies will be automatically installed inside the `node_modules` folder.

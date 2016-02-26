@@ -76,7 +76,8 @@ var scheduleScroll = function () {
 };
 
 var flowScroll = function (newRoute) {
-  if(newRoute.context.pathname.indexOf("#") == -1)
+  var path = (newRoute.context && newRoute.context.pathname) || newRoute.path;
+  if (path.indexOf("#") == -1)
     scrollTo(0);
   else
     scheduleScroll();
