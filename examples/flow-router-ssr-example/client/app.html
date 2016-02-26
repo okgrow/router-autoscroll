@@ -1,0 +1,49 @@
+<template name="mainLayout">
+  <header><h1>Router AutoScroll Demo</h1></header>
+  <main>
+    {{>Template.dynamic template=content}}
+  </main>
+  <footer>We love Meteor!</footer>
+</template>
+
+<template name="blogHome">
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>This is the home page of our blog</p>
+  <p>
+    <a href="/hello-world">See Hello World Post</a>
+  </p>
+</template>
+
+<template name="blogPost">
+  <!--- Note these back links dont trigger autoscroll, since they are not
+        actual calls like history.back() - they link forward to the page -->
+  <a href="/">Back</a> <br/>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <p>This is a single blog post</p>
+  <a href="/">Back</a> <br/>
+</template>

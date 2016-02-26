@@ -1,0 +1,25 @@
+{
+  "name": "flow-router-example",
+  "version": "0.1.0",
+  "description": "Manage settings, testing, deployment of your meteor app",
+  "scripts": {
+    "start": "meteor --port 4160 --settings settings.development.json",
+    "test": "spacejam test-packages ./",
+    "deploy": "meteor deploy flow-router-autoscroll.meteor.com",
+    "view": "open http://flow-router-autoscroll.meteor.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okgrow/router-autoscroll"
+  },
+  "keywords": [
+    "meteor", "npm", "package.json"
+  ],
+  "author": "Dean Radcliffe",
+  "license": "MIT",
+  "homepage": "https://github.com/okgrow/router-autoscroll",
+  "devDependencies": {
+    "spacejam": "^1.2.2"
+  }
+
+}
