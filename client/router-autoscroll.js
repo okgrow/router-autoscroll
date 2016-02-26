@@ -33,8 +33,10 @@ function getScrollToPosition () {
     backToPosition = undefined;
     return oldPosition;
   }
-
-  var hash = window.location.hash;
+  
+  //find dots in the hash and place a backslash before it to fix the case
+  //where an anchor jumps to the anchor and immediatly to the top of the page
+  var hash = window.location.hash.replace(/\./g, "\\\.");
   var $hash;
 
   if(hash.indexOf('maintainScroll=1') > -1)
