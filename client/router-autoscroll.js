@@ -37,12 +37,8 @@ function getScrollToPosition () {
   var id = window.location.hash.replace("#", '');
   var element;
 
-  console.log("what is id?", id);
-
-
   // check if maintainScroll=1 exists
   if (id.indexOf('maintainScroll=1') > -1) {
-    console.log("bail");
     return undefined;
   }
 
@@ -50,14 +46,10 @@ function getScrollToPosition () {
   //decide the hash doesn't represent a DOM id if we fail
   try {
     element = document.getElementById(id);
-    console.log("what is element?", element);
   } catch (ex) {
     element = false;
-    console.log("catch");
   }
-  console.log("outside try, what is element?", element);
   if (element) {
-    console.log("check element one more time", element);
     return element.getBoundingClientRect().top + scrollTop();
   }
 
