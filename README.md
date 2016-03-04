@@ -105,3 +105,7 @@ npm test
 ```
 
 The required selenium server and chromedriver dependencies will be automatically installed inside the `node_modules` folder.
+
+### License
+
+Released under the [MIT license](https://github.com/okgrow/router-autoscroll/blob/master/License.md).
