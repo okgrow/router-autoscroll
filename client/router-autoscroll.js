@@ -33,35 +33,32 @@ function getScrollToPosition () {
     backToPosition = undefined;
     return oldPosition;
   }
-  
-  //find dots in the hash and place a backslash before it to fix the case
-  //where an anchor jumps to the anchor and immediatly to the top of the page
-  var hash = window.location.hash.replace(/\./g, "\\\.");
-  var $hash;
 
-  if(hash.indexOf('maintainScroll=1') > -1)
+  var id = window.location.hash.replace("#", '');
+  var element;
+
+  console.log("what is id?", id);
+
+
+  // check if maintainScroll=1 exists
+  if (id.indexOf('maintainScroll=1') > -1) {
+    console.log("bail");
     return undefined;
+  }
 
-  if (_jQuery) {
-    try {
-      //HTML5 allows all kinds of ids, so we can't whitelist characters, only
-      //decide the hash doesn't represent a DOM id if we fail
-      $hash = _jQuery(hash);
-    } catch (ex) {
-      $hash = [];
-    }
-
-    if ($hash.length)
-      return $hash.offset().top;
-  } else {
-    try {
-      $hash = document.querySelector(hash);
-    } catch (ex) {
-      $hash = false;
-    }
-
-    if ($hash)
-      return $hash.getBoundingClientRect().top + scrollTop();
+  //HTML5 allows all kinds of ids, so we can't whitelist characters, only
+  //decide the hash doesn't represent a DOM id if we fail
+  try {
+    element = document.getElementById(id);
+    console.log("what is element?", element);
+  } catch (ex) {
+    element = false;
+    console.log("catch");
+  }
+  console.log("outside try, what is element?", element);
+  if (element) {
+    console.log("check element one more time", element);
+    return element.getBoundingClientRect().top + scrollTop();
   }
 
   return 0;
