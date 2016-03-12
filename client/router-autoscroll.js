@@ -34,32 +34,23 @@ function getScrollToPosition () {
     return oldPosition;
   }
 
-  var hash = window.location.hash;
-  var $hash;
+  var id = window.location.hash.replace("#", '');
+  var element;
 
-  if(hash.indexOf('maintainScroll=1') > -1)
+  // check if maintainScroll=1 exists
+  if (id.indexOf('maintainScroll=1') > -1) {
     return undefined;
+  }
 
-  if (_jQuery) {
-    try {
-      //HTML5 allows all kinds of ids, so we can't whitelist characters, only
-      //decide the hash doesn't represent a DOM id if we fail
-      $hash = _jQuery(hash);
-    } catch (ex) {
-      $hash = [];
-    }
-
-    if ($hash.length)
-      return $hash.offset().top;
-  } else {
-    try {
-      $hash = document.querySelector(hash);
-    } catch (ex) {
-      $hash = false;
-    }
-
-    if ($hash)
-      return $hash.getBoundingClientRect().top + scrollTop();
+  //HTML5 allows all kinds of ids, so we can't whitelist characters, only
+  //decide the hash doesn't represent a DOM id if we fail
+  try {
+    element = document.getElementById(id);
+  } catch (ex) {
+    element = false;
+  }
+  if (element) {
+    return element.getBoundingClientRect().top + scrollTop();
   }
 
   return 0;
