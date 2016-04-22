@@ -11,7 +11,6 @@ peerlibrary:dimsum
 okgrow:router-autoscroll
 #to trigger hotcodepush
 #deanius:debug-ddp
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -25,3 +24,5 @@ random
 ejson
 spacebars
 check
+standard-minifier-css
+standard-minifier-js
