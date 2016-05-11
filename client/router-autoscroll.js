@@ -94,6 +94,8 @@ var scrollTop = function () {
 }
 
 var scrollTo = function (position) {
+  if (position === undefined) return;
+
   if (_jQuery) {
     _jQuery('body,html').animate({
       scrollTop: position - RouterAutoscroll.marginTop
